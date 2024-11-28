@@ -48,8 +48,8 @@ export const LoginForm = () => {
         startTransition(() => {
             login(values)
                 .then((data) => {
-                    setError(data?.error);
-                    setSuccess(data?.success);
+                    setError(data.error);
+                    setSuccess(data.success);
                 })
         });
     };
@@ -108,7 +108,7 @@ export const LoginForm = () => {
                             )}
                         />
                     </div>
-                    <FormError message={error || urlError}/>
+                    <FormError message={error}/>
                     <FormSuccess message={success}/>
                     <Button
                         type="submit"

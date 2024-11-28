@@ -20,18 +20,6 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
 
     const existingUser = await getUserByEmail(email);
 
-    if (!existingUser || !existingUser.email || !existingUser.password) {
-        return { error: "Credenciais inválidas!" }
-    }
-
-    if (!existingUser.emailVerified) {
-        const verificationToken = await generateVerificationToken(
-            existingUser.email,
-        );
-
-        return { success: "Email de confirmação eviado!" };
-    }
-
     try {
         await signIn("credentials", {
             email,

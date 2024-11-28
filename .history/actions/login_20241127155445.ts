@@ -21,7 +21,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     const existingUser = await getUserByEmail(email);
 
     if (!existingUser || !existingUser.email || !existingUser.password) {
-        return { error: "Credenciais inválidas!" }
+        return { error: "Email não existe!" }
     }
 
     if (!existingUser.emailVerified) {
@@ -29,7 +29,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
             existingUser.email,
         );
 
-        return { success: "Email de confirmação eviado!" };
+        return { succes: "Email de confirmação eviado!" }
     }
 
     try {
