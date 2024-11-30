@@ -1,5 +1,7 @@
 import { Resend } from "resend";
 
+const domain = process.env.NEXT_PUBLIC_APP_URL;
+
 export const sendTwoFactorTokenEmail = async (
     email: string,
     token: string,
@@ -19,7 +21,7 @@ export const sendPasswordResetEmail = async (
     token: string,
 ) => {
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const resetLink = `http://localhost:3000/auth/new-password?token=${token}`;
+    const resetLink = `${domain}/auth/new-password?token=${token}`;
 
     await resend.emails.send({
         from: "onboarding@resend.dev",
@@ -34,7 +36,7 @@ export const sendVerificationEmail = async (
     token: string,
 ) => {
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const confirmLink = `http://localhost:3000/auth/new-verification?token=${token}`;
+    const confirmLink = `${domain}/auth/new-verification?token=${token}`;
 
     await resend.emails.send({
         from: "onboarding@resend.dev",
