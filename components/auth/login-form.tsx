@@ -41,40 +41,45 @@ export const LoginForm = () => {
         defaultValues: {
             email: "",
             password: "",
+            code: "",
         },
     });
 
     const onSubmit = (values: z.infer<typeof LoginSchema>) => {
         setError("");
         setSuccess("");
-
+   
         startTransition(() => {
             login(values, callbackUrl)
                 .then((data) => {
+
                     if (data?.error) {
                         form.reset();
                         setError(data.error);
                     }
-
+   
                     if (data?.success) {
                         form.reset();
                         setSuccess(data.success);
                     }
-
+   
                     if (data?.twoFactor) {
                         setShowTwoFactor(true);
                     }
                 })
-                .catch(() => setError("Oops! Algo deu errado!"));
+                .catch((error) => {
+                    setError("Oops! Algo deu errado!");
+                });
         });
     };
+   
 
     return (
         <CardWrapper
-            headerLabel="Bem vindo(a) de volta!"
+            headerLabel={showTwoFactor ? "Confirme sua autenticação!" : "Bem vindo(a) de volta!"}
             backButtonLabel="Ainda não tem uma conta?"
             backButtonHref="/auth/register"
-            showSocial
+            showSocial={!showTwoFactor}
         >
             <Form {...form}>
                 <form 
@@ -95,7 +100,7 @@ export const LoginForm = () => {
                                     <Input 
                                         {...field}
                                         disabled={isPending}
-                                        placeholder="000000"
+                                        placeholder="123456"
                                     /> 
                                     </FormControl>
                                     <FormMessage />

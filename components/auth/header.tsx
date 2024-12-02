@@ -1,7 +1,6 @@
 import { Poppins } from "next/font/google";
 
 import { cn } from "@/lib/utils";
-import { Children } from "react";
 
 const font = Poppins({
     subsets: ["latin"],
@@ -21,7 +20,7 @@ export const Header = ({
                 "text-3xl font-semibold",
                 font.className,
             )}>
-                Autenticação
+                Implantify
             </h1>
             <p className="text-muted-foreground text-sm">
                 {label}

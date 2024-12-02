@@ -16,7 +16,7 @@ export default function Home() {
           "text-6xl font-semibold text-white drop-shadow-md",
           font.className,
           )}>
-          Autenticação
+          Implantify
         </h1>
         <p className="text-white text-lg">
           Página de autenticação simples
