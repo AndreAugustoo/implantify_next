@@ -68,7 +68,7 @@ export const LoginForm = () => {
                     }
                 })
                 .catch((error) => {
-                    setError("Oops! Algo deu errado!");
+                    setError("Oops! Algo deu errado! " + error);
                 });
         });
     };

@@ -3,63 +3,39 @@
 import * as React from "react"
 import {
   AudioWaveform,
-  BadgeCheck,
-  Bell,
   BookOpen,
   Bot,
   ChevronRight,
   ChevronsUpDown,
   Command,
-  CreditCard,
   Folder,
   Forward,
   Frame,
   GalleryVerticalEnd,
-  LogOut,
   Map,
   MoreHorizontal,
   PieChart,
   Plus,
   Settings2,
-  Sparkles,
   SquareTerminal,
-  Trash2,
-  Calendar,
-    Home,
-    Inbox,
-    Settings,
-    ChevronDown
-} from "lucide-react"
+  Trash2
+} from "lucide-react";
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+} from "@/components/ui/collapsible";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Separator } from "@/components/ui/separator"
+} from "@/components/ui/dropdown-menu";
+
 import {
   Sidebar,
   SidebarContent,
@@ -67,7 +43,6 @@ import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarHeader,
-  SidebarInset,
   SidebarMenu,
   SidebarMenuAction,
   SidebarMenuButton,
@@ -75,11 +50,8 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-  SidebarProvider,
   SidebarRail,
-  SidebarTrigger,
-  SidebarGroupContent
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 import { UserButton } from "@/components/auth/user-button";
 import Link from "next/link";
@@ -210,8 +182,6 @@ const data = {
   }
 
 export function AppSidebar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const handleToggle = () => setIsOpen(!isOpen);
     const [activeTeam, setActiveTeam] = useState(data.teams[0]);
 
   return (
@@ -246,7 +216,7 @@ export function AppSidebar() {
                   sideOffset={4}
                 >
                   <DropdownMenuLabel className="text-xs text-muted-foreground">
-                    Teams
+                    Empresas
                   </DropdownMenuLabel>
                   {data.teams.map((team, index) => (
                     <DropdownMenuItem
