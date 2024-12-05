@@ -32,9 +32,9 @@ export const LoginButton = ({
             <Dialog>
                 <DialogTrigger asChild={asChild}>
                     {children}
-                </DialogTrigger>
-                <DialogTitle/>
+                </DialogTrigger>   
                 <DialogContent className="p-0 w-auto bg-transparent border-none">
+                <DialogTitle />
                     <LoginForm />
                 </DialogContent>
             </Dialog>

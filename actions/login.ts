@@ -51,9 +51,11 @@ export const login = async (
         return { success: "Email de confirmação eviado!" };
     }
 
-    if (existingUser.isTwoFactorEnabled && existingUser.email) {
+    if (existingUser.isTwoFactorEnabled && existingUser.email) 
+    {
         if (code) {
             const twoFactorToken = await getTwoFactorTokenByEmail(existingUser.email);
+
             if (!twoFactorToken) {
                 return { error: "Código inválido!" };
             }
@@ -107,8 +109,10 @@ export const login = async (
         if (error instanceof AuthError) {
             switch (error.type) {
                 case "CredentialsSignin":
+                    console.error(error)
                     return { error: "Credenciais inválidas!" }
                 default:
+                    console.error(error)
                     return { error: "Algo deu errado!" }
             }
         }

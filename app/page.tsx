@@ -22,7 +22,7 @@ export default function Home() {
           Página de autenticação simples
         </p>
         <div>
-          <LoginButton mode="modal" asChild>
+          <LoginButton mode="redirect" asChild>
             <Button variant="secondary" size="lg">
               Login
             </Button>

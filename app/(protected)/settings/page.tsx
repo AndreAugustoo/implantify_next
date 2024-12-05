@@ -72,9 +72,9 @@ const SettingsPage = () => {
             .catch(() => setError("Oops! Algo deu errado!"));
         });
     }
- 
+
     return (
-        <Card className="w-[600px]">
+        <Card>
             <CardHeader>
                 <p className="text-2xl font-semibold text-center">
                     Settings

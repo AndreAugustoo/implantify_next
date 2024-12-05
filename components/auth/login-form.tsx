@@ -41,18 +41,16 @@ export const LoginForm = () => {
         defaultValues: {
             email: "",
             password: "",
-            code: "",
         },
     });
 
     const onSubmit = (values: z.infer<typeof LoginSchema>) => {
         setError("");
         setSuccess("");
-   
-        startTransition(() => {
+            
+        startTransition(() => {           
             login(values, callbackUrl)
                 .then((data) => {
-
                     if (data?.error) {
                         form.reset();
                         setError(data.error);
@@ -67,13 +65,12 @@ export const LoginForm = () => {
                         setShowTwoFactor(true);
                     }
                 })
-                .catch((error) => {
-                    setError("Oops! Algo deu errado! " + error);
-                });
+                //.catch((error) => {
+                //    setError("Oops! Algo deu errado! " + error);
+                //});*/
         });
     };
    
-
     return (
         <CardWrapper
             headerLabel={showTwoFactor ? "Confirme sua autenticação!" : "Bem vindo(a) de volta!"}
