@@ -13,12 +13,14 @@ import {
     BreadcrumbPage 
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
+import { ModeToggle } from "@/components/mode-toggle";
 
 interface ProtectedLayoutProps {
     children: React.ReactNode;
 };
 
 const ProtectedLayout = ({children}: ProtectedLayoutProps) => {
+
     return (
         <SidebarProvider>
             <AppSidebar />
@@ -36,11 +38,15 @@ const ProtectedLayout = ({children}: ProtectedLayoutProps) => {
                     </BreadcrumbItem>
                     <BreadcrumbSeparator className="hidden md:block" />
                     <BreadcrumbItem>
-                        <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                        <BreadcrumbPage>xxxxxxx</BreadcrumbPage>
                     </BreadcrumbItem>
                     </BreadcrumbList>
-                </Breadcrumb>
+                </Breadcrumb>              
                 </div>
+                <div className="ml-auto px-4">
+                    <ModeToggle />
+                </div>
+                
             </header>
             <main className="flex flex-1 flex-col gap-4 p-4 pt-0">
                 {children}
