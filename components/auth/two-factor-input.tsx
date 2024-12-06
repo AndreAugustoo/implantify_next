@@ -1,4 +1,9 @@
-import React, { useState, ChangeEvent, KeyboardEvent, ClipboardEvent } from "react";
+import React, {
+  useState,
+  ChangeEvent,
+  KeyboardEvent,
+  ClipboardEvent,
+} from "react";
 
 interface TwoFactorInputProps {
   isPending: boolean;
@@ -20,7 +25,10 @@ const TwoFactorInput: React.FC<TwoFactorInputProps> = ({ isPending }) => {
     }
   };
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>, index: number) => {
+  const handleKeyDown = (
+    event: KeyboardEvent<HTMLInputElement>,
+    index: number
+  ) => {
     // Voltar para o campo anterior com Backspace
     if (event.key === "Backspace" && !codes[index] && index > 0) {
       const prevInput = document.getElementById(`code-${index - 1}`);
@@ -51,10 +59,16 @@ const TwoFactorInput: React.FC<TwoFactorInputProps> = ({ isPending }) => {
           maxLength={1}
           value={code}
           disabled={isPending}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(e.target.value, index)}
-          onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => handleKeyDown(e, index)}
-          onPaste={(e: ClipboardEvent<HTMLInputElement>) => index === 0 && handlePaste(e)}
-          className="w-12 h-12 border text-center text-lg rounded-md"
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            handleChange(e.target.value, index)
+          }
+          onKeyDown={(e: KeyboardEvent<HTMLInputElement>) =>
+            handleKeyDown(e, index)
+          }
+          onPaste={(e: ClipboardEvent<HTMLInputElement>) =>
+            index === 0 && handlePaste(e)
+          }
+          className="h-12 w-12 rounded-md border text-center text-lg"
         />
       ))}
     </div>

@@ -18,7 +18,13 @@ import {
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { LogoutButton } from "./logout-button";
-import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, Sparkles } from "lucide-react";
+import {
+  BadgeCheck,
+  Bell,
+  ChevronsUpDown,
+  CreditCard,
+  Sparkles,
+} from "lucide-react";
 
 export const UserButton = () => {
   const user = useCurrentUser();
@@ -37,12 +43,8 @@ export const UserButton = () => {
             </AvatarFallback>
           </Avatar>
           <div className="grid flex-1 text-left text-sm leading-tight">
-            <span className="truncate font-semibold">
-              {user?.name}
-            </span>
-            <span className="truncate text-xs">
-              {user?.email}
-            </span>
+            <span className="truncate font-semibold">{user?.name}</span>
+            <span className="truncate text-xs">{user?.email}</span>
           </div>
           <ChevronsUpDown className="ml-auto size-4" />
         </SidebarMenuButton>
@@ -61,41 +63,37 @@ export const UserButton = () => {
               </AvatarFallback>
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-semibold">
-                {user?.name}
-              </span>
-              <span className="truncate text-xs">
-                {user?.email}
-              </span>
+              <span className="truncate font-semibold">{user?.name}</span>
+              <span className="truncate text-xs">{user?.email}</span>
             </div>
           </div>
-          </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                      <Sparkles />
-                      Upgrade to Pro
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                      <BadgeCheck />
-                      Account
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <CreditCard />
-                      Billing
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <Bell />
-                      Notifications
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                  <DropdownMenuSeparator />
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <Sparkles />
+            Upgrade to Pro
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <BadgeCheck />
+            Account
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <CreditCard />
+            Billing
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Bell />
+            Notifications
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
         <LogoutButton>
           <DropdownMenuItem className="cursor-pointer">
-            <ExitIcon className="h-4 w-4 mr-2" />
+            <ExitIcon className="mr-2 h-4 w-4" />
             Logout
           </DropdownMenuItem>
         </LogoutButton>

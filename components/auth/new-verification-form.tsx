@@ -10,46 +10,44 @@ import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 
 export const NewVerificationForm = () => {
-    const [error, setError] = useState<string | undefined>();
-    const [success, setSuccess] = useState<string | undefined>();
-    
-    const searchParams = useSearchParams();
+  const [error, setError] = useState<string | undefined>();
+  const [success, setSuccess] = useState<string | undefined>();
 
-    const token = searchParams.get("token");
+  const searchParams = useSearchParams();
 
-    const onSubmit = useCallback(() => {
-        if (!token) {
-            setError("Token não encontrado!")
-            return;
-        };
+  const token = searchParams.get("token");
 
-        newVerification(token)
-            .then((data) => {
-                setSuccess(data.success);
-                setError(data.error);
-            })
-            .catch(() => {
-                setError("Oops! Algo deu errado!");
-            });
-    }, [token]);
+  const onSubmit = useCallback(() => {
+    if (!token) {
+      setError("Token não encontrado!");
+      return;
+    }
 
-    useEffect(() => {
-        onSubmit();
-    }, [onSubmit]);
+    newVerification(token)
+      .then((data) => {
+        setSuccess(data.success);
+        setError(data.error);
+      })
+      .catch(() => {
+        setError("Oops! Algo deu errado!");
+      });
+  }, [token]);
 
-    return (
-        <CardWrapper
-            headerLabel="Confirmando sua verificação..."
-            backButtonLabel="Voltar para login"
-            backButtonHref="/auth/login"
-        >
-            <div className="flex items-center w-full justify-center">
-                {!success && !error && (
-                    <BeatLoader/>
-                )}      
-                <FormSuccess message={success}/>
-                <FormError message={error}/>
-            </div>
-        </CardWrapper>
-    );
+  useEffect(() => {
+    onSubmit();
+  }, [onSubmit]);
+
+  return (
+    <CardWrapper
+      headerLabel="Confirmando sua verificação..."
+      backButtonLabel="Voltar para login"
+      backButtonHref="/auth/login"
+    >
+      <div className="flex w-full items-center justify-center">
+        {!success && !error && <BeatLoader />}
+        <FormSuccess message={success} />
+        <FormError message={error} />
+      </div>
+    </CardWrapper>
+  );
 };

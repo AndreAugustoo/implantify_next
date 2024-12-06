@@ -5,22 +5,22 @@ import { LoginButton } from "@/components/auth/login-button";
 
 const font = Poppins({
   subsets: ["latin"],
-  weight: ["600"]
+  weight: ["600"],
 });
 
 export default function Home() {
   return (
-    <main className="flex h-full flex-col items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 to to-slate-950">
+    <main className="to flex h-full flex-col items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 to-slate-950">
       <div className="space-y-6 text-center">
-        <h1 className={cn(
-          "text-6xl font-semibold text-white drop-shadow-md",
-          font.className,
-          )}>
+        <h1
+          className={cn(
+            "text-6xl font-semibold text-white drop-shadow-md",
+            font.className
+          )}
+        >
           Implantify
         </h1>
-        <p className="text-white text-lg">
-          Página de autenticação simples
-        </p>
+        <p className="text-lg text-white">Página de autenticação simples</p>
         <div>
           <LoginButton mode="redirect" asChild>
             <Button variant="secondary" size="lg">

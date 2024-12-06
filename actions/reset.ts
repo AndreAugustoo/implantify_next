@@ -8,27 +8,27 @@ import { sendPasswordResetEmail } from "@/lib/mail";
 import { generatePasswordResetToken } from "@/lib/tokens";
 
 export const reset = async (values: z.infer<typeof ResetSchema>) => {
-    const validatedFields = ResetSchema.safeParse(values);
+  const validatedFields = ResetSchema.safeParse(values);
 
-    if (!validatedFields.success) {
-        return { error: "Email inválido!" };
-    }
+  if (!validatedFields.success) {
+    return { error: "Email inválido!" };
+  }
 
-    const { email } = validatedFields.data;
-    
-    const existingUser = await getUserByEmail(email);
+  const { email } = validatedFields.data;
 
-    console.log(existingUser)
+  const existingUser = await getUserByEmail(email);
 
-    if (!existingUser) {
-        return { error: "Email não encontrado!" };
-    }
+  console.log(existingUser);
 
-    const passwordResetToken = await generatePasswordResetToken(email);
-    await sendPasswordResetEmail(
-        passwordResetToken.email,
-        passwordResetToken.token,
-    );
+  if (!existingUser) {
+    return { error: "Email não encontrado!" };
+  }
 
-    return { success: "Email de recuperação enviado!" };
-}
+  const passwordResetToken = await generatePasswordResetToken(email);
+  await sendPasswordResetEmail(
+    passwordResetToken.email,
+    passwordResetToken.token
+  );
+
+  return { success: "Email de recuperação enviado!" };
+};

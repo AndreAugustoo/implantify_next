@@ -22,9 +22,9 @@ export const {
     async linkAccount({ user }) {
       await db.user.update({
         where: { id: user.id },
-        data: { emailVerified: new Date() }
-      })
-    }
+        data: { emailVerified: new Date() },
+      });
+    },
   },
   callbacks: {
     async signIn({ user, account }) {
@@ -35,12 +35,14 @@ export const {
       if (!existingUser?.emailVerified) return false;
 
       if (existingUser.isTwoFactorEnabled) {
-        const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(existingUser.id);
+        const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(
+          existingUser.id
+        );
 
         if (!twoFactorConfirmation) return false;
 
         await db.twoFactorConfirmation.delete({
-          where: { id: twoFactorConfirmation.id }
+          where: { id: twoFactorConfirmation.id },
         });
       }
 
@@ -79,7 +81,7 @@ export const {
       token.role = existingUser.role;
       token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled;
       return token;
-    }
+    },
   },
   adapter: PrismaAdapter(db),
   session: { strategy: "jwt" },
